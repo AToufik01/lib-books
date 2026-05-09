@@ -1,5 +1,6 @@
 package com.libbooks.library.controller;
 
+import com.libbooks.library.model.dto.RoleDTO;
 import com.libbooks.library.model.entity.Role;
 import com.libbooks.library.service.interfaceService.RoleService;
 import org.springframework.web.bind.annotation.*;
@@ -15,21 +16,21 @@ public class RoleController {
     }
 
     @GetMapping("/role/{roleId}")
-    public Optional<Role> getRoleById(@PathVariable Integer roleId){
+    public RoleDTO getRoleById(@PathVariable Integer roleId){
         return this.roleService.getRoleById(roleId);
     }
 
     @GetMapping("/roles")
-    public List<Role> getAllRoles(){
+    public List<RoleDTO> getAllRoles(){
         return this.roleService.getRoles();
     }
     @PostMapping("/role")
-    public void addRole(@RequestBody Role role){
+    public void addRole(@RequestBody RoleDTO role){
         this.roleService.addRole(role);
     }
 
     @PutMapping("/role/{roleId}")
-    public void updateRole(@PathVariable Integer roleId,@RequestBody Role role){
+    public void updateRole(@PathVariable Integer roleId,@RequestBody RoleDTO role){
         this.roleService.updateRole(roleId,role);
     }
 

@@ -1,16 +1,17 @@
 package com.libbooks.library.service.interfaceService;
 
+import com.libbooks.library.model.dto.BookDTO;
 import com.libbooks.library.model.entity.Book;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface BookService {
-    public Optional<Book> getBookById(Integer bookId);
-    public List<Book> getBooks();
-    public List<Book> getBooksByOwner(Integer ownerId);
-    public void addBook(Book book);
-    public void updateBook(Integer bookId,Book book);
-    public void deleteBook(Integer bookId);
+    BookDTO getBookById(Integer bookId);
+    List<BookDTO> getBooks();
+    List<BookDTO> getBooksByOwner(Integer ownerId);
+    BookDTO addBook(BookDTO book);
+    BookDTO updateBook(Integer bookId,BookDTO book);
+    void deleteBook(Integer bookId);
 
 }

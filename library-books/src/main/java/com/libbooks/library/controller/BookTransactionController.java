@@ -1,5 +1,6 @@
 package com.libbooks.library.controller;
 
+import com.libbooks.library.model.dto.BookTransactionDTO;
 import com.libbooks.library.model.entity.BookTransactionHistory;
 import com.libbooks.library.service.interfaceService.BookTransactionService;
 import org.springframework.web.bind.annotation.*;
@@ -15,22 +16,22 @@ public class BookTransactionController {
     }
 
     @GetMapping("/bookTransaction/{bookTransactionId}")
-    public Optional<BookTransactionHistory> getBookTransactionById(@PathVariable Integer bookTransactionId){
+    public BookTransactionDTO getBookTransactionById(@PathVariable Integer bookTransactionId){
         return this.bookTransactionService.getBookTransactionById(bookTransactionId);
     }
 
     @GetMapping("/bookTransactions")
-    public List<BookTransactionHistory> getAllBookTransactions(){
+    public List<BookTransactionDTO> getAllBookTransactions(){
         return this.bookTransactionService.getBookTransactions();
     }
 
     @PostMapping("/bookTransaction")
-    public void addBookTransaction(@RequestBody BookTransactionHistory bookTransaction){
+    public void addBookTransaction(@RequestBody BookTransactionDTO bookTransaction){
         this.bookTransactionService.addBookTransaction(bookTransaction);
     }
 
     @PutMapping("/bookTransaction/{bookTransactionId}")
-    public void updateBookTransaction(@PathVariable Integer bookTransactionId,@RequestBody BookTransactionHistory bookTransaction){
+    public void updateBookTransaction(@PathVariable Integer bookTransactionId,@RequestBody BookTransactionDTO bookTransaction){
         this.bookTransactionService.updateBookTransaction(bookTransactionId,bookTransaction);
     }
 

@@ -1,6 +1,7 @@
 package com.libbooks.library.controller;
 
 
+import com.libbooks.library.model.dto.FeedBackDTO;
 import com.libbooks.library.model.entity.FeedBack;
 import com.libbooks.library.service.interfaceService.FeedBackService;
 import org.springframework.web.bind.annotation.*;
@@ -16,21 +17,21 @@ public class FeedBackController {
     }
 
     @GetMapping("/feedback/{feedBackId}")
-    public Optional<FeedBack> getFeedBackById(@PathVariable Integer feedBackId){
+    public FeedBackDTO getFeedBackById(@PathVariable Integer feedBackId){
         return this.feedBackService.getFeedBackById(feedBackId);
     }
 
     @GetMapping("/feedbacks")
-    public List<FeedBack> getAllFeedBacks(){
+    public List<FeedBackDTO> getAllFeedBacks(){
         return this.feedBackService.getFeedBacks();
     }
 
     @PostMapping("/feedback")
-    public void addFeedBack(@RequestBody FeedBack feedBack){
+    public void addFeedBack(@RequestBody FeedBackDTO feedBack){
         this.feedBackService.addFeedBack(feedBack);
     }
     @PutMapping("/feedback/{feedBackId}")
-    public void updateFeedBack(@PathVariable Integer feedBackId,@RequestBody FeedBack feedBack){
+    public void updateFeedBack(@PathVariable Integer feedBackId,@RequestBody FeedBackDTO feedBack){
         this.feedBackService.updateFeedBack(feedBackId,feedBack);
     }
 
