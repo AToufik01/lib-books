@@ -2,11 +2,10 @@ package com.libbooks.library.model.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.modelmapper.spi.Tokens;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -15,15 +14,19 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Token {
     @Id
     @GeneratedValue
     private Integer id;
     private String token;
-    private Date createdAt;
-    private Date expiredAt;
-    private Date validatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime expiredAt;
+    private LocalDateTime validatedAt;
 
     @ManyToOne
+    @JoinColumn(name = "userId",nullable = false)
     private User user;
+
+
 }

@@ -2,18 +2,24 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/library_book
     username: taoufik
-    password: 12345
+    password: 12345@
     driver-class-name: org.postgresql.Driver
 
+
   jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: false
     properties:
       hibernate:
-        format_sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: update
+      show-sql: false
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   mail:
     host: localhost
@@ -27,3 +33,13 @@ spring:
         auth: true
         starttls:
           enabled: true
+  application:
+     security:
+       jwt:
+         secret-key: my-secret-key
+         expiration: 3600000
+     mailing:
+         forntend:
+           activation-url: http://localhost:4200/activate-account
+  server:
+    port: 8080
